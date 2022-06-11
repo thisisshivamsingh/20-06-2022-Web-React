@@ -1,16 +1,15 @@
 import logo from "./logo.svg";
 import "./App.css";
-import User from "./User";
-
 function App() {
-  function Apple() {
-    return <div>Apple Component</div>;
+  let data = "shivam singh";
+  function apple() {
+    data = "peter";
+    alert(data);
   }
   return (
     <div className="App">
-      <h1>Hello World !</h1>
-      <User />
-      <Apple />
+      <h1>{data}</h1>
+      <button onClick={apple}>Click Me</button>
     </div>
   );
 }
