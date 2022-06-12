@@ -1,22 +1,14 @@
 import logo from "./logo.svg";
 import "./App.css";
-import User from "./User";
-import Members from "./Members";
+import React from "react";
 
-function App() {
-  function getData() {
-    alert("hello from app");
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = { data: "Shivam" };
   }
-  return (
-    <div className="App">
-      <User data={getData} />
-      <User data={getData} />
-      <User data={getData} />
-      <User data={getData} />
-      <div style={{ float: "right" }}>
-        <Members data={getData} />
-      </div>
-    </div>
-  );
+  render() {
+    return <h1>Hello World {this.state.data}</h1>;
+  }
 }
 export default App;
