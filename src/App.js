@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="App">
       <h1>Render Method in React</h1>
-      <User name={name} />
-      <button onClick={() => setName("Singh")}>Update Name</button>
+      <User />
+      {/* <button onClick={() => setName("Singh")}>Update Name</button> */}
     </div>
   );
 }
