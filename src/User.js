@@ -1,11 +1,12 @@
 import React from "react";
-
-function User(props) {
-  return (
-    <div>
-      <h1>User Component</h1>
-      <button onClick={props.data}>Call data function</button>
-    </div>
-  );
+class User extends React.Component {
+  render() {
+    console.log("Render method", this.props);
+    return (
+      <div>
+        <h1>User Component {this.props.name}</h1>
+      </div>
+    );
+  }
 }
 export default User;
