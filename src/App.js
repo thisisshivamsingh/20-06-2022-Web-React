@@ -1,16 +1,28 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
-
-import User from "./User";
-function App() {
-  const [name, setName] = React.useState("Shivam");
-  return (
-    <div className="App">
-      <h1>Render Method in React</h1>
-      <User />
-      {/* <button onClick={() => setName("Singh")}>Update Name</button> */}
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = { name: "shivam" };
+  }
+  componentDidMount() {
+    console.log("componentDidMount");
+  }
+  render() {
+    console.log("render");
+    // this.setState({ name: "Singh" });
+    return (
+      <div className="App">
+        <h1>Component Did Mount {this.state.name}</h1>
+        <button
+          onClick={() => {
+            this.setState({ name: "Singh" });
+          }}
+        >
+          Update Name
+        </button>
+      </div>
+    );
+  }
 }
 export default App;
