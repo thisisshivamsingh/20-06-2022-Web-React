@@ -1,15 +1,14 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import User from "./User";
 function App() {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    console.log("useEffect");
-  });
-
+  const [data, setData] = useState(10);
+  const [count, setCount] = useState(100);
   return (
     <div className="App">
-      <h1>useEffect in React {count}</h1>
-      <button onClick={() => setCount(count + 1)}>Update Counter</button>
+      <User count={count} data={data} />
+      <button onClick={() => setCount(count + 1)}>Update Count</button>
+      <button onClick={() => setData(data + 1)}>Update Data</button>
     </div>
   );
 }
