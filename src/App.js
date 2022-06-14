@@ -1,30 +1,36 @@
 import "./App.css";
 import React from "react";
+import { Table } from "react-bootstrap";
 function App() {
-  // const students = ["Shivam", "Singh", "Sam", "Peter"];
-  const students = [
-    { name: "shivam", email: "shivam@test.com", contact: 888 },
-    { name: "singh", email: "singh@test.com", contact: 111 },
-    { name: "sam", email: "sam@test.com", contact: 222 },
-    { name: "peter", email: "peter@test.com", contact: 333 },
+  const users = [
+    { name: "Shivam", email: "shivam@test.com", contact: "111" },
+    { name: "Bruce", email: "bruce@test.com", contact: "222" },
+    { name: "Peter", email: "peter@test.com", contact: "111" },
+    { name: "Sam", email: "sam@test.com", contact: "110" },
   ];
   return (
     <div className="App">
-      <h1>Handle Array with List</h1>
-      <table border="1">
-        <tr>
-          <td>Name</td>
-          <td>Email</td>
-          <td>Contact</td>
-        </tr>
-        {students.map((data) => (
+      <h1>List With Bootstrap Table</h1>
+      <Table striped variant="dark">
+        <tbody>
           <tr>
-            <td>{data.name}</td>
-            <td>{data.email}</td>
-            <td>{data.contact}</td>
+            <td>S. No</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Contact</td>
           </tr>
-        ))}
-      </table>
+          {users.map((item, i) =>
+            item.contact === "111" ? (
+              <tr key={i}>
+                <td>{i}</td>
+                <td>{item.name}</td>
+                <td>{item.email}</td>
+                <td>{item.contact}</td>
+              </tr>
+            ) : null
+          )}
+        </tbody>
+      </Table>
     </div>
   );
 }
