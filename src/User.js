@@ -31,13 +31,27 @@
 
 //////////////// #36 Reuse Component in loop ///////////////
 
+// function User(props) {
+//   return (
+//     <div>
+//       <span>{props.data.name}</span>
+//       <span>{props.data.email}</span>
+//       <button>Hello {props.data.contact}</button>
+//     </div>
+//   );
+// }
+// export default User;
+
+//////////////// #38 Send Data Child to Parent Component ////////////////
+
 function User(props) {
+  const data = { name: "shivam singh", email: "shivam@test.com" };
   return (
-    <div>
-      <span>{props.data.name}</span>
-      <span>{props.data.email}</span>
-      <button>Hello {props.data.contact}</button>
-    </div>
+    <>
+      <h2>User Name : </h2>
+      <button onClick={() => props.alert(data)}>Click Me</button>
+    </>
   );
 }
+
 export default User;
