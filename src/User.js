@@ -58,16 +58,28 @@
 
 ////////////// #39 Pure Component in ReactJs ///////////////
 
-import "./App.css";
-import React, { PureComponent } from "react";
-class User extends PureComponent {
-  render() {
-    console.log("user component check-rerendering");
-    return (
-      <div className="App">
-        <h1>User Component {this.props.count}</h1>
-      </div>
-    );
-  }
+// import "./App.css";
+// import React, { PureComponent } from "react";
+// class User extends PureComponent {
+//   render() {
+//     console.log("user component check-rerendering");
+//     return (
+//       <div className="App">
+//         <h1>User Component {this.props.count}</h1>
+//       </div>
+//     );
+//   }
+// }
+// export default User;
+
+////////////// #43 forwardRef example /////////////
+
+import React, { forwardRef } from "react";
+function User(props, ref) {
+  return (
+    <div>
+      <input type="text" ref={ref} />
+    </div>
+  );
 }
-export default User;
+export default forwardRef(User);
