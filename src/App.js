@@ -1,18 +1,29 @@
 import "./App.css";
-import React, { useRef } from "react";
-import User from "./User";
+import React, { useState } from "react";
 function App() {
-  const inputRef = useRef(null);
-  function updateInput() {
-    inputRef.current.value = "1000";
-    inputRef.current.style.color = "red";
-    inputRef.current.focus();
-  }
+  const [val, setVal] = useState("000");
+  const [item, setItem] = useState("");
   return (
     <div className="App">
-      <h1>forwardRef In React</h1>
-      <User ref={inputRef} />
-      <button onClick={updateInput}>Update InputBox</button>
+      <h1>Controlled Component</h1>
+      <input
+        type="text"
+        value={val}
+        // defaultValue="000"
+        onChange={(e) => {
+          setVal(e.target.value);
+        }}
+      />
+      <input
+        type="text"
+        defaultValue="000"
+        onChange={(e) => {
+          setItem(e.target.value);
+        }}
+      />
+
+      <h3>Value:{val}</h3>
+      <h3>Item:{item}</h3>
     </div>
   );
 }
