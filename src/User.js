@@ -44,14 +44,30 @@
 
 //////////////// #38 Send Data Child to Parent Component ////////////////
 
-function User(props) {
-  const data = { name: "shivam singh", email: "shivam@test.com" };
-  return (
-    <>
-      <h2>User Name : </h2>
-      <button onClick={() => props.alert(data)}>Click Me</button>
-    </>
-  );
-}
+// function User(props) {
+//   const data = { name: "shivam singh", email: "shivam@test.com" };
+//   return (
+//     <>
+//       <h2>User Name : </h2>
+//       <button onClick={() => props.alert(data)}>Click Me</button>
+//     </>
+//   );
+// }
 
+// export default User;
+
+////////////// #39 Pure Component in ReactJs ///////////////
+
+import "./App.css";
+import React, { PureComponent } from "react";
+class User extends PureComponent {
+  render() {
+    console.log("user component check-rerendering");
+    return (
+      <div className="App">
+        <h1>User Component {this.props.count}</h1>
+      </div>
+    );
+  }
+}
 export default User;
