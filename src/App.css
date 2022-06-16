@@ -9,6 +9,9 @@
 .navbar {
   text-align: right;
 }
+/* .navbar .active {
+  color: skyblue;
+} */
 .navbar li {
   display: inline-block;
   padding: 10px 5px;
