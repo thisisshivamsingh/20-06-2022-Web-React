@@ -1,11 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function Home() {
+  const navigate = useNavigate();
+  const navToPage = (url) => {
+    navigate(url);
+  };
   return (
     <>
       <h1>Home Page</h1>
       <p>This is a Home Page of our awesome App</p>
       <p>And here we are learning about Router</p>
       <Link to="/about">Go to About Page</Link>
+      <br />
+      <button onClick={() => navToPage("/about")}>Go to About Page</button>
+      <br />
+      <button onClick={() => navToPage("/filter")}>Go to Filter Page</button>
     </>
   );
 }
