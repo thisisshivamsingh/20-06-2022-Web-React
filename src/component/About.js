@@ -7,7 +7,9 @@ function About() {
       <p>And here we are learning about Router</p>
       <Link to="/">Go to Home Page</Link>
       <li>
-        <Link to="/user/shivam">Shivam</Link>
+        <Link to="/user/shivam" state={{ name: "shivam kumar singh", age: 27 }}>
+          Shivam
+        </Link>
       </li>
       <li>
         <Link to="/user/peter">Peter</Link>
