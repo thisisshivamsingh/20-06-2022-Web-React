@@ -47,6 +47,17 @@ function NavBar() {
             Filter
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            style={({ isActive }) => {
+              return { color: isActive ? "skyblue" : "" };
+            }}
+            className="nav-bar-link"
+            to="/login"
+          >
+            Login
+          </NavLink>
+        </li>
         {/* <li>
           <a href="/">Home </a>
         </li>
