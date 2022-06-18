@@ -84,4 +84,18 @@
 // }
 // export default forwardRef(User);
 
+/////////////// #50 Dynamic Routing /////////////////
 
+// import { withRouter } from "react-router-dom";
+function User(prop) {
+  //   console.log(prop.match.params.id);
+  return (
+    <div>
+      <h1>User Component</h1>
+      {/* <h1>Hi this is user no {prop.match.params.id}</h1> */}
+      {/* <h1>Hi this is {prop.match.params.name}</h1> */}
+    </div>
+  );
+}
+export default User;
+// export default withRouter(User);
