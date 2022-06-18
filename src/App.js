@@ -1,31 +1,37 @@
 import "./App.css";
-import React from "react";
-import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
-import User from "./User";
+import React, { useEffect, useState } from "react";
 function App() {
-  const users = [
-    { id: 1, name: "shivam", email: "shivam@test.com" },
-    { id: 2, name: "sam", email: "sam@test.com" },
-    { id: 3, name: "peter", email: "peter@test.com" },
-    { id: 4, name: "bruce", email: "bruce@test.com" },
-    { id: 5, name: "tony", email: "tony@test.com" },
-    { id: 13, name: "batman", email: "bat@test.com" },
-  ];
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("http://universities.hipolabs.com/search?country=United+States").then(
+      (result) => {
+        result.json().then((resp) => {
+          // console.log("result", resp);
+          setData(resp);
+        });
+      }
+    );
+  }, []);
+  console.log(data);
   return (
     <div className="App">
-      <Router>
-        <h1>React Dynamic Routing</h1>
-        {users.map((item) => (
-          <div>
-            <Link to={"/user/" + item.id + "/" + item.name}>
-              <h3>{item.name}</h3>
-            </Link>
-          </div>
+      <h1>Get API Call</h1>
+      <table border="1">
+        <tr>
+          <td>Name</td>
+          <td>Country</td>
+          <td>Country Code</td>
+          <td>Website</td>
+        </tr>
+        {data.map((item) => (
+          <tr>
+            <td>{item.name}</td>
+            <td>{item.country}</td>
+            <td>{item.alpha_two_code}</td>
+            <td>{item.web_pages[0]}</td>
+          </tr>
         ))}
-        <Routes>
-          <Route path="/user/:id/:name" element={<User />} />
-        </Routes>
-      </Router>
+      </table>
     </div>
   );
 }
