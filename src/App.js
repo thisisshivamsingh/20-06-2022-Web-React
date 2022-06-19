@@ -1,62 +1,54 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 function App() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
-  function saveUser() {
-    console.log({ name, email, mobile });
-    const data = { name, email, mobile };
-    fetch("http://localhost:3000/users", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }).then((result) => {
-      // console.log("result", result);
+  const [users, setUser] = useState();
+  useEffect(() => {
+    getList();
+  }, []);
+  console.log(users);
+  function getList() {
+    fetch("http://localhost:3000/users").then((result) => {
       result.json().then((resp) => {
-        console.log("resp", resp);
+        // console.log(resp);
+        setUser(resp);
       });
     });
   }
+  function deleteUser(id) {
+    fetch(`http://localhost:3000/users/${id}`, { method: "DELETE" }).then(
+      (result) => {
+        result.json().then((resp) => {
+          console.log(resp);
+          getList();
+        });
+      }
+    );
+  }
   return (
     <div className="App">
-      <h1>POST API Example</h1>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => {
-          setName(e.target.value);
-        }}
-        name="name"
-      />
-      <br />
-      <br />
-      <input
-        type="text"
-        value={email}
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-        name="name"
-      />
-      <br />
-      <br />
-      <input
-        type="text"
-        value={mobile}
-        onChange={(e) => {
-          setMobile(e.target.value);
-        }}
-        name="name"
-      />
-      <br />
-      <br />
-      <button type="button" onClick={saveUser}>
-        Save New User
-      </button>
+      <h1>Delete Data with API Call</h1>
+      <table border="1">
+        <tbody>
+          <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Mobile</td>
+            <td>Operations</td>
+          </tr>
+        </tbody>
+        {users.map((item, i) => (
+          <tr key={i}>
+            <td>{item.id}</td>
+            <td>{item.name}</td>
+            <td>{item.email}</td>
+            <td>{item.mobile}</td>
+            <td>
+              <button onClick={() => deleteUser(item.id)}>Delete</button>
+            </td>
+          </tr>
+        ))}
+      </table>
     </div>
   );
 }
