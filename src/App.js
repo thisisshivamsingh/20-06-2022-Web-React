@@ -2,15 +2,20 @@ import "./App.css";
 import React, { useEffect, useState } from "react";
 function App() {
   const [users, setUser] = useState([]);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
   useEffect(() => {
     getList();
   }, []);
-  console.log(users);
   function getList() {
     fetch("http://localhost:3000/users").then((result) => {
       result.json().then((resp) => {
         // console.log(resp);
         setUser(resp);
+        setName(resp[0].name);
+        setEmail(resp[0].email);
+        setMobile(resp[0].mobile);
       });
     });
   }
@@ -23,6 +28,13 @@ function App() {
         });
       }
     );
+  }
+  function selectUser(id) {
+    console.log(users[id - 1]);
+    let item = users[id - 1];
+    setName(item.name);
+    setEmail(item.email);
+    setMobile(item.mobile);
   }
   return (
     <div className="App">
@@ -46,9 +58,24 @@ function App() {
             <td>
               <button onClick={() => deleteUser(item.id)}>Delete</button>
             </td>
+            <td>
+              <button onClick={() => selectUser(item.id)}>Update</button>
+            </td>
           </tr>
         ))}
       </table>
+      <div>
+        <input type="text" value={name} />
+        <br />
+        <br />
+        <input type="text" value={email} />
+        <br />
+        <br />
+        <input type="text" value={mobile} />
+        <br />
+        <br />
+        <button>Update User</button>
+      </div>
     </div>
   );
 }
