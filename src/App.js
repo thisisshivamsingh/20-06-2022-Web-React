@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 function App() {
-  const [users, setUser] = useState();
+  const [users, setUser] = useState([]);
   useEffect(() => {
     getList();
   }, []);
