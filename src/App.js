@@ -3,14 +3,12 @@ import React, { useEffect, useState } from "react";
 function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://universities.hipolabs.com/search?country=United+States").then(
-      (result) => {
-        result.json().then((resp) => {
-          // console.log("result", resp);
-          setData(resp);
-        });
-      }
-    );
+    fetch("http://localhost:3000/users").then((result) => {
+      result.json().then((resp) => {
+        // console.log("result", resp);
+        setData(resp);
+      });
+    });
   }, []);
   console.log(data);
   return (
@@ -18,17 +16,17 @@ function App() {
       <h1>Get API Call</h1>
       <table border="1">
         <tr>
+          <td>ID</td>
           <td>Name</td>
-          <td>Country</td>
-          <td>Country Code</td>
-          <td>Website</td>
+          <td>Email</td>
+          <td>Mobile</td>
         </tr>
         {data.map((item) => (
           <tr>
+            <td>{item.id}</td>
             <td>{item.name}</td>
-            <td>{item.country}</td>
-            <td>{item.alpha_two_code}</td>
-            <td>{item.web_pages[0]}</td>
+            <td>{item.email}</td>
+            <td>{item.mobile}</td>
           </tr>
         ))}
       </table>
