@@ -1,26 +1,14 @@
 import "./App.css";
-import React, { useState } from "react";
+import React from "react";
+import User from "./User";
 function App() {
-  const [count, setCount] = useState(1);
-  function updateCounter() {
-    // const rand = Math.floor(Math.random() * 10);
-    // setCount((pre) => {
-    //   console.log(pre);
-    //   if (pre < 5) {
-    //     alert("low value");
-    //   }
-    //   return rand;
-    // });
-    for (let i = 0; i < 5; i++) {
-      setCount((pre) => {
-        return pre + 1;
-      });
-    }
-  }
+  const [count, setCount] = React.useState(0);
   return (
     <div className="App">
-      <h1>{count}</h1>
-      <button onClick={updateCounter}>Click Me to Update counter</button>
+      <User count={count} />
+      <button onClick={() => setCount(Math.floor(Math.random() * 10))}>
+        Update Counter
+      </button>
     </div>
   );
 }
