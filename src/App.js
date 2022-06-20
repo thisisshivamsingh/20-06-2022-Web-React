@@ -1,14 +1,35 @@
 import "./App.css";
 import React from "react";
-import User from "./User";
 function App() {
-  const [count, setCount] = React.useState(0);
+  const [data, setData] = React.useState({ name: "shivam", age: 24 });
   return (
     <div className="App">
-      <User count={count} />
-      <button onClick={() => setCount(Math.floor(Math.random() * 10))}>
-        Update Counter
-      </button>
+      <h1>State Objects with Hooks</h1>
+      <input
+        type="text"
+        placeholder="enter name"
+        value={data.name}
+        onChange={(e) => {
+          setData({
+            ...data,
+            name: e.target.value,
+          });
+        }}
+      />
+      <input
+        type="text"
+        placeholder="enter age"
+        value={data.age}
+        onChange={(e) => {
+          setData({
+            ...data,
+            age: e.target.value,
+          });
+        }}
+      />
+
+      <h1>{data.name}</h1>
+      <h1>{data.age}</h1>
     </div>
   );
 }
